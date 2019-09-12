@@ -2,6 +2,8 @@
 
 # React Hooks
 
+![](https://media.giphy.com/media/fdvhxNoDHfaZW/giphy.gif)
+
 ## Objectives
 
 By the end of this, developers should be able to:
@@ -81,6 +83,19 @@ Creating the `counter` and `setCounter` variables grouped with square brackets
 is essentially saying to take the array returned from `useState`, and the first
 element should be the value of `counter` while the second element will be the
 value of `setCounter.`
+
+It's important to note the array destructuring involved with `useState`. The `useState` returns a data structure, which is equivalent to declaring an array with two elements:
+
+```javascript
+const colors = ['red', 'green'];
+console.log(colors[0]);
+=> 'red'
+const [colorOne, colorTwo] = colors;
+console.log(colorOne);
+=> 'red'
+console.log(colorTwo);
+=> 'green'
+```
 
 #### Updating State with Hooks
 

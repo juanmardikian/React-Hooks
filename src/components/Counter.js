@@ -28,25 +28,3 @@ const Counter = () => {
 };
 
 export default Counter;
-
-// https://media.giphy.com/media/fdvhxNoDHfaZW/giphy.gif
-
-// Review Counter Lifecycle
-// Counter initialized on page load
-// User taps "increase" button, handleIncrease runs
-// After a brief pause, React automatically re-renders this component
-// Counter is not initialized again
-// counter value is increased by 1
-// return some JSX that references the updated value
-
-// Array Destructuring
-// const colors = ['red', 'green'];
-// colors[0] == 'red'
-// const [colorOne, colorTwo] = colors;
-// colorOne == 'red'
-// colorTwo == 'green'
-
-// setCounter == setState
-// this.setState({
-//	counter: counter + 1
-// });

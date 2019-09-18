@@ -41,6 +41,10 @@ prototypes. Now developers won't have to learn class syntax just to use React.
 This also means we won't have to worry about binding `this` or using fat arrow
 functions to avoid having to to it.
 
+#### Turn and Talk (5 mins)
+- Why should we use hooks? 
+- Write out the advantages and disadvantages for hooks
+
 ### How to Use Hooks
 
 Before we convert the class components in this repo let's take a look at some
@@ -86,6 +90,9 @@ value of `setCounter.`
 
 It's important to note the array destructuring involved with `useState`. The `useState` returns a data structure, which is equivalent to declaring an array with two elements:
 
+
+#### Breaking Down Array Destructuring:
+
 ```javascript
 const colors = ['red', 'green'];
 console.log(colors[0]);
@@ -96,6 +103,26 @@ console.log(colorOne);
 console.log(colorTwo);
 => 'green'
 ```
+
+#### Turn and Talk (5 mins)
+
+How would we convert the following `constructor` method to `useState`?
+
+```javascript
+constructor (props) {
+  super(props)
+
+  this.state = {
+    color: 'green'
+  }
+}
+```
+<details>
+
+```javascript
+const [color, setColors] = useState('green')
+```
+</details>
 
 #### Updating State with Hooks
 
@@ -117,6 +144,27 @@ want the value to increase by one.
 `setCounter` and `counter` were both created by the same invocation of
 `useState` and therefore we don't need to tell `setCounter` what it should be
 updating.
+
+#### Turn and Talk (5 mins) 
+
+- How would we convert the following `constructor` to `useState`?
+
+```javascript
+constructor (props) {
+  super(props)
+
+  this.state = {
+    colors: ['green', 'orange']
+  }
+}
+```
+
+<details>
+
+```javascript
+const [colors, setColors] = useState(['green', 'orange'])
+```
+</details>
 
 #### Hooking into Lifecycle Methods :rainbow:
 

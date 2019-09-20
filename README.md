@@ -120,9 +120,18 @@ constructor (props) {
 <details>
 
 ```javascript
-const [color, setColors] = useState('green')
+const [color, setColor] = useState('green')
 ```
 </details>
+
+<details>
+<summary>BONUS Q: How would we initialize a new `colors` array with `useState`?</summary>
+
+```javascript
+const [colors, setColors] = useState(['green', 'yellow'])
+```
+</details>
+
 
 #### Updating State with Hooks
 
@@ -147,22 +156,16 @@ updating.
 
 #### Turn and Talk (5 mins) 
 
-- How would we convert the following `constructor` to `useState`?
+- How would we add a new color to the following `useState` method's initial array?
 
 ```javascript
-constructor (props) {
-  super(props)
-
-  this.state = {
-    colors: ['green', 'orange']
-  }
-}
+const [colors, setColors] = useState(['green', 'orange'])
 ```
 
 <details>
 
 ```javascript
-const [colors, setColors] = useState(['green', 'orange'])
+setColors(colors.concat('yellow'));
 ```
 </details>
 
@@ -192,7 +195,8 @@ see. Now we can see how to achieve this with `useEffect`.
 ```javascript
 useEffect(() => {
   setColors([]);
-}, []);
+}, []); 
+// ^^ Please insert an empty array here! 
 ```
 
 As you can see it's not drastically different, but let's address all the
@@ -216,11 +220,13 @@ The last change is a bit strange. After the callback function, we pass an
 additional argument to `useEffect`, an empty array. Why would we need to pass
 in an empty array? The answer is a little tricky.
 
+## :warning: Warning! `useEffect` can lead to infinite loops. 
+
 Now that we are using one function to replace all the Lifecycle methods we
 would normally use, it comes with a caveat. `useEffect` is invoked every time
 the component renders, which means if you modify the component's state inside
 of `useEffect` it will trigger a re-render, which will in turn invoke
-`useEffect` again! Essentially an endless loop of calling itself.
+`useEffect` again! Essentially an *endless loop* of calling itself.
 
 Luckily `useEffect` accepts an array of dependencies as the second argument.
 The array should contain any objects that you want `useEffect` to depend on. If
@@ -296,9 +302,12 @@ variable.
 + useEffect(() => {
 +   setColors(['rgb(0,0,0)'])
 + }, [])
++ // ^^ Please include the empty array argument!
 ```
 
-We can't forget to pass an empty array as the second argument to `useEffect`,
+## :warning: Second Warning! Please use the empty array argument.
+
+We *can't* forget to pass an empty array as the second argument to `useEffect`,
 this tells React to only run the callback on the first render of the component,
 which replicates the behavior of using `componentDidMount`.
 
